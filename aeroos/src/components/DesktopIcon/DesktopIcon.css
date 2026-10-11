@@ -3,3 +3,50 @@
 .desktop-icon-art{display:grid;width:44px;height:42px;place-items:center;font-size:32px;line-height:1;filter:drop-shadow(0 2px 2px rgba(0,37,62,.35))}
 .desktop-icon-label{max-width:80px;font-size:11px;line-height:1.25;overflow-wrap:anywhere}
 @media(max-width:500px){.desktop-icon{width:74px;min-height:72px}.desktop-icon-art{font-size:28px;width:38px;height:36px}.desktop-icon-label{font-size:10px}}
+
+
+.desktop-icon {
+  width: 94px;
+  min-height: 90px;
+  gap: 7px;
+  padding: 9px 5px 8px;
+  border: 1px solid rgba(235, 255, 255, .18);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,.22), transparent 60%),
+    linear-gradient(145deg, rgba(218,255,255,.08), rgba(122,226,239,.035));
+  color: rgba(255,255,255,.98);
+  text-shadow: 0 1px 7px rgba(0, 40, 76, .7);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s, border-color .2s, box-shadow .2s;
+}
+
+.desktop-icon:hover, .desktop-icon.is-selected {
+  border-color: rgba(255,255,255,.74);
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,.48), transparent 62%),
+    linear-gradient(145deg, rgba(191,255,252,.24), rgba(79,204,231,.12));
+  box-shadow: 0 9px 24px rgba(0, 55, 93, .14), 0 0 24px rgba(139,255,248,.14), inset 0 1px 0 rgba(255,255,255,.72);
+  transform: translateY(-2px);
+}
+
+.desktop-icon-art {
+  width: 48px;
+  height: 46px;
+  font-size: 34px;
+  filter: drop-shadow(0 4px 5px rgba(0,37,62,.25));
+}
+
+.desktop-icon-label {
+  max-width: 84px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .015em;
+}
+
+@media(max-width:500px) {
+  .desktop-icon { width: 78px; min-height: 76px; border-radius: 18px; padding: 6px 3px; }
+  .desktop-icon-art { font-size: 29px; width: 39px; height: 37px; }
+}
