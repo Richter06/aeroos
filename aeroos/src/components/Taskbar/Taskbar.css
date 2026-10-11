@@ -4,3 +4,113 @@
 .taskbar-windows{flex:1;overflow:hidden}.taskbar-window{display:flex;width:clamp(90px,15vw,175px);height:34px;flex:0 1 auto;align-items:center;gap:7px;padding:0 9px;overflow:hidden;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(1,58,102,.12));color:white;text-align:left;text-shadow:0 1px 2px rgba(0,36,67,.65);cursor:pointer}.taskbar-window.is-active{border-color:rgba(255,255,255,.78);background:linear-gradient(180deg,rgba(218,248,255,.55),rgba(28,135,188,.52));box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 0 8px rgba(170,245,255,.15)}.taskbar-window.is-minimized{opacity:.7}.taskbar-window>span:first-child{flex:0 0 auto}.taskbar-window-title{overflow:hidden;font-size:11px;text-overflow:ellipsis;white-space:nowrap}
 .system-tray{display:flex;height:36px;flex:0 0 auto;align-items:center;gap:9px;padding:0 7px 0 11px;border-left:1px solid rgba(255,255,255,.22);color:white;text-shadow:0 1px 2px rgba(0,37,69,.65)}.tray-status{font-size:13px;opacity:.95}.sound-status{font-size:10px}.tray-language{font-size:10px;opacity:.85}.taskbar-clock{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:58px;font-size:11px;line-height:1.2}.taskbar-clock span:last-child{font-size:9px;opacity:.82}.show-desktop{width:5px;align-self:stretch;margin:1px -8px 1px 1px;border-left:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
 @media(max-width:650px){.aero-taskbar{gap:4px;padding-right:5px}.start-orb{width:38px;height:38px}.taskbar-pin{width:32px}.taskbar-pins{gap:0}.taskbar-pin:nth-child(n+4){display:none}.system-tray{gap:5px;padding-left:6px}.tray-status,.tray-language{display:none}.taskbar-window{width:42px;justify-content:center;padding:0 5px}.taskbar-window-title{display:none}}
+
+
+/* Floating lagoon dock: no full-width Windows-style taskbar */
+.aero-taskbar {
+  right: auto;
+  bottom: 13px;
+  left: 50%;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  height: 60px;
+  gap: 10px;
+  padding: 6px 11px;
+  border: 1px solid rgba(231, 255, 255, .76);
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255, 255, 255, .7), transparent 55%),
+    linear-gradient(145deg, rgba(222, 255, 252, .58), rgba(100, 206, 227, .36) 52%, rgba(67, 150, 205, .46));
+  box-shadow:
+    0 18px 48px rgba(0, 42, 85, .25),
+    0 0 30px rgba(101, 249, 241, .16),
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -1px 0 rgba(53, 173, 199, .2);
+  backdrop-filter: blur(28px) saturate(1.65);
+  -webkit-backdrop-filter: blur(28px) saturate(1.65);
+  transform: translateX(-50%);
+}
+
+.start-orb {
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, .98);
+  background:
+    radial-gradient(circle at 29% 20%, #fff 0 4%, rgba(255, 255, 255, .9) 8%, transparent 26%),
+    radial-gradient(circle at 35% 28%, #c9fff7, #6cf5e1 26%, #24bcd6 52%, #218cc8 75%, #3a7dc0);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, .96),
+    inset 0 -7px 13px rgba(0, 79, 137, .22),
+    0 0 0 3px rgba(202, 255, 249, .17),
+    0 0 23px rgba(98, 255, 239, .44);
+}
+
+.start-orb-core { font-size: 23px; text-shadow: 0 1px 4px rgba(0, 93, 133, .45); }
+
+.taskbar-pins, .taskbar-windows { gap: 6px; }
+
+.taskbar-pin {
+  width: 43px;
+  height: 43px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: rgba(226, 255, 255, .12);
+  filter: drop-shadow(0 2px 3px rgba(0, 67, 105, .15));
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s, box-shadow .2s;
+}
+
+.taskbar-pin:hover {
+  border-color: rgba(255, 255, 255, .8);
+  background: radial-gradient(circle at 30% 15%, rgba(255,255,255,.8), rgba(168,255,249,.35) 60%, rgba(81,201,225,.18));
+  box-shadow: 0 0 18px rgba(122, 255, 242, .24), inset 0 1px 0 #fff;
+  transform: translateY(-4px) scale(1.08);
+}
+
+.taskbar-window {
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, .52);
+  border-radius: 15px;
+  background: rgba(224, 255, 255, .2);
+  color: #124d68;
+  text-shadow: 0 1px rgba(255, 255, 255, .7);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.taskbar-window.is-active {
+  border-color: rgba(255,255,255,.95);
+  background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(130,239,231,.42));
+  box-shadow: 0 0 18px rgba(111,255,240,.22), inset 0 1px 0 #fff;
+}
+
+.taskbar-window-title { font-size: 11px; }
+
+.system-tray {
+  border-left: 1px solid rgba(255, 255, 255, .48);
+  color: #12516a;
+  text-shadow: 0 1px rgba(255, 255, 255, .7);
+}
+
+.taskbar-clock { font-weight: 650; }
+
+.show-desktop {
+  align-self: center;
+  height: 31px;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 999px;
+  background: rgba(255,255,255,.2);
+}
+
+@media(max-width:650px) {
+  .aero-taskbar {
+    bottom: 8px;
+    height: 54px;
+    gap: 5px;
+    padding: 5px 7px;
+    border-radius: 20px;
+  }
+  .start-orb { width: 40px; height: 40px; }
+  .taskbar-pin { width: 35px; height: 38px; border-radius: 13px; }
+  .taskbar-window { height: 36px; }
+  .system-tray { gap: 4px; padding: 0 3px 0 6px; }
+}
