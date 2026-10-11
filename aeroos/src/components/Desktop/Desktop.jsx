@@ -19,6 +19,15 @@ export default function Desktop({ wallpaper, onContextMenu, children }) {
     >
       <div className="wallpaper-wash" aria-hidden="true" />
       <div className="nature-haze" aria-hidden="true" />
+      <div className="aurora-ribbon aurora-ribbon-one" aria-hidden="true" />
+      <div className="aurora-ribbon aurora-ribbon-two" aria-hidden="true" />
+      <div className="floating-organisms" aria-hidden="true">
+        <span className="aero-orb orb-large" />
+        <span className="aero-orb orb-medium" />
+        <span className="aero-orb orb-small" />
+        <span className="aero-leaf leaf-one" />
+        <span className="aero-leaf leaf-two" />
+      </div>
       <div className="sun-glow" aria-hidden="true" />
       <div className="water-caustics" aria-hidden="true" />
       <div className="light-ribbon ribbon-one" aria-hidden="true" />
