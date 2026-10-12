@@ -6,6 +6,8 @@ const BUBBLES = [
   ['bubble-two', '-4s'],
   ['bubble-three', '-8s'],
   ['bubble-four', '-2s'],
+  ['bubble-five', '-11s'],
+  ['bubble-six', '-6s'],
 ]
 
 export default function Desktop({
@@ -22,11 +24,34 @@ export default function Desktop({
       onContextMenu={onContextMenu}
       aria-label="Área de trabalho do AeroOS"
     >
-      <div className="wallpaper-wash" />
-      <div className="sun-glow" />
-      <div className="light-ribbon ribbon-one" />
-      <div className="light-ribbon ribbon-two" />
+      <div className="wallpaper-wash" aria-hidden="true" />
+      <div className="nature-haze" aria-hidden="true" />
 
+      {/* Elementos atmosféricos Frutiger Aero */}
+      <div
+        className="aurora-ribbon aurora-ribbon-one"
+        aria-hidden="true"
+      />
+      <div
+        className="aurora-ribbon aurora-ribbon-two"
+        aria-hidden="true"
+      />
+
+      <div className="floating-organisms" aria-hidden="true">
+        <span className="aero-orb orb-large" />
+        <span className="aero-orb orb-medium" />
+        <span className="aero-orb orb-small" />
+        <span className="aero-leaf leaf-one" />
+        <span className="aero-leaf leaf-two" />
+      </div>
+
+      <div className="sun-glow" aria-hidden="true" />
+      <div className="water-caustics" aria-hidden="true" />
+      <div className="light-ribbon ribbon-one" aria-hidden="true" />
+      <div className="light-ribbon ribbon-two" aria-hidden="true" />
+      <div className="glass-sweep" aria-hidden="true" />
+
+      {/* Bolhas animadas */}
       <div className="ambient-bubbles" aria-hidden="true">
         {BUBBLES.map(([name, delay]) => (
           <span
@@ -37,6 +62,7 @@ export default function Desktop({
         ))}
       </div>
 
+      {/* Identidade do AeroOS */}
       <div className="desktop-topline">
         <span className="aero-brand">
           <span className="brand-orb">a</span>
@@ -48,6 +74,7 @@ export default function Desktop({
         </span>
       </div>
 
+      {/* Aplicativos e ícones da área de trabalho */}
       {children}
 
       <div className="desktop-corner-note">
