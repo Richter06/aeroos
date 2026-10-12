@@ -114,3 +114,145 @@
   .taskbar-window { height: 36px; }
   .system-tray { gap: 4px; padding: 0 3px 0 6px; }
 }
+
+
+/* Frutiger Aero 2000s utopian interface: pearl-white, watery and translucent */
+.aero-taskbar {
+  right: auto;
+  bottom: 16px;
+  left: 50%;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  min-height: 66px;
+  height: auto;
+  gap: 11px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, .92);
+  border-radius: 30px;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(255, 255, 255, .97), transparent 46%),
+    radial-gradient(ellipse at 80% 120%, rgba(151, 245, 255, .27), transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, .78), rgba(239, 254, 255, .48) 48%, rgba(192, 239, 250, .38));
+  box-shadow:
+    0 18px 48px rgba(10, 76, 119, .19),
+    0 2px 9px rgba(255, 255, 255, .72),
+    0 0 32px rgba(155, 245, 255, .2),
+    inset 0 2px 0 rgba(255, 255, 255, .98),
+    inset 0 -1px 0 rgba(76, 190, 220, .18);
+  backdrop-filter: blur(30px) saturate(1.55);
+  -webkit-backdrop-filter: blur(30px) saturate(1.55);
+  transform: translateX(-50%);
+}
+
+.aero-taskbar::before {
+  content: '';
+  position: absolute;
+  inset: 1px 2px auto;
+  height: 48%;
+  border-radius: 28px 28px 70% 70%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .64), rgba(255, 255, 255, .13) 65%, transparent);
+  pointer-events: none;
+}
+
+.aero-taskbar > * { position: relative; }
+
+.start-orb {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, .98);
+  background:
+    radial-gradient(circle at 28% 17%, #fff 0 5%, rgba(255,255,255,.92) 8%, transparent 25%),
+    radial-gradient(circle at 32% 25%, #f4ffff 0%, #d5fffc 19%, #9deef3 38%, #6dc9e8 60%, #9dbfe9 80%, #d9f8ff 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.98),
+    inset 0 -5px 9px rgba(50,145,191,.14),
+    0 2px 8px rgba(76,169,205,.16),
+    0 0 20px rgba(187,255,255,.45);
+  color: #2b8cae;
+}
+
+.start-orb-core { font-size: 23px; text-shadow: 0 1px 1px rgba(255,255,255,.9); }
+
+.taskbar-pins, .taskbar-windows { gap: 7px; }
+
+.taskbar-pin {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 17px;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,.72), transparent 60%),
+    rgba(255,255,255,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+  filter: drop-shadow(0 2px 3px rgba(54,129,157,.1));
+}
+
+.taskbar-pin:hover {
+  border-color: rgba(255,255,255,.95);
+  background:
+    radial-gradient(ellipse at 28% 8%, #fff, rgba(255,255,255,.38) 55%, transparent),
+    linear-gradient(145deg, rgba(255,255,255,.64), rgba(158,240,246,.36));
+  box-shadow: 0 0 17px rgba(156,239,255,.3), inset 0 1px 0 #fff;
+  transform: translateY(-4px) scale(1.06);
+}
+
+.taskbar-windows { padding: 0 2px; }
+
+.taskbar-window {
+  width: clamp(82px, 13vw, 150px);
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 17px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,.7), transparent 65%),
+    rgba(245,255,255,.24);
+  color: #42768b;
+  text-shadow: 0 1px rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.taskbar-window.is-active {
+  border-color: rgba(255,255,255,.98);
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,.95), transparent 65%),
+    linear-gradient(145deg, rgba(255,255,255,.78), rgba(188,247,249,.48));
+  color: #276a82;
+  box-shadow: 0 0 18px rgba(135,231,244,.25), inset 0 1px 0 #fff, 0 2px 5px rgba(90,171,196,.1);
+}
+
+.taskbar-window.is-minimized { opacity: .6; }
+
+.system-tray {
+  border-left: 1px solid rgba(255,255,255,.62);
+  color: #4b8195;
+  text-shadow: 0 1px rgba(255,255,255,.9);
+}
+
+.tray-status, .tray-language { opacity: .9; }
+.taskbar-clock { font-weight: 650; color: #3c758c; }
+
+.show-desktop {
+  width: 5px;
+  border-left-color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.22);
+  border-radius: 999px;
+}
+
+@media(max-width:650px) {
+  .aero-taskbar {
+    bottom: 8px;
+    min-height: 54px;
+    gap: 5px;
+    padding: 5px 7px;
+    border-radius: 23px;
+  }
+  .start-orb { width: 40px; height: 40px; }
+  .taskbar-pin { width: 35px; height: 38px; border-radius: 14px; }
+  .taskbar-window { height: 36px; }
+  .system-tray { gap: 4px; padding: 0 3px 0 6px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .taskbar-pin, .start-orb { transition: none; }
+}
