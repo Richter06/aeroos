@@ -1,52 +1,245 @@
-.desktop-icon{display:flex;width:86px;min-height:82px;padding:7px 4px 6px;flex-direction:column;align-items:center;gap:5px;border:1px solid transparent;border-radius:5px;background:transparent;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,35,68,.95),0 0 5px rgba(0,35,68,.45);cursor:default;transition:background .15s ease,border-color .15s ease}
-.desktop-icon:hover,.desktop-icon.is-selected{border-color:rgba(255,255,255,.4);background:rgba(166,226,255,.25);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
-.desktop-icon-art{display:grid;width:44px;height:42px;place-items:center;font-size:32px;line-height:1;filter:drop-shadow(0 2px 2px rgba(0,37,62,.35))}
-.desktop-icon-label{max-width:80px;font-size:11px;line-height:1.25;overflow-wrap:anywhere}
-@media(max-width:500px){.desktop-icon{width:74px;min-height:72px}.desktop-icon-art{font-size:28px;width:38px;height:36px}.desktop-icon-label{font-size:10px}}
-
+/* =========================================
+   AEROOS — ÍCONES EM BOLHAS DE VIDRO
+   ========================================= */
 
 .desktop-icon {
-  width: 94px;
-  min-height: 90px;
-  gap: 7px;
-  padding: 9px 5px 8px;
-  border: 1px solid rgba(235, 255, 255, .18);
-  border-radius: 22px;
-  background:
-    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,.22), transparent 60%),
-    linear-gradient(145deg, rgba(218,255,255,.08), rgba(122,226,239,.035));
-  color: rgba(255,255,255,.98);
-  text-shadow: 0 1px 7px rgba(0, 40, 76, .7);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
-  transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s, border-color .2s, box-shadow .2s;
+  position: relative;
+  display: flex;
+  width: 104px;
+  min-height: 126px;
+  padding: 5px 3px 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+
+  color: #fff;
+  text-align: center;
+  text-shadow:
+    0 1px 3px rgba(0, 35, 68, 0.85),
+    0 0 8px rgba(0, 35, 68, 0.4);
+
+  cursor: default;
+  outline: none;
+
+  transition:
+    transform 220ms ease,
+    background 220ms ease;
 }
 
-.desktop-icon:hover, .desktop-icon.is-selected {
-  border-color: rgba(255,255,255,.74);
+/* Bolha perfeitamente circular */
+.desktop-icon-orb {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  flex: 0 0 auto;
+  width: 78px;
+  height: 78px;
+  place-items: center;
+
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+
   background:
-    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,.48), transparent 62%),
-    linear-gradient(145deg, rgba(191,255,252,.24), rgba(79,204,231,.12));
-  box-shadow: 0 9px 24px rgba(0, 55, 93, .14), 0 0 24px rgba(139,255,248,.14), inset 0 1px 0 rgba(255,255,255,.72);
-  transform: translateY(-2px);
+    radial-gradient(
+      circle at 29% 19%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.68) 4%,
+      rgba(255, 255, 255, 0.18) 13%,
+      transparent 29%
+    ),
+    radial-gradient(
+      circle at 75% 78%,
+      rgba(117, 223, 255, 0.17),
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(240, 254, 255, 0.07) 54%,
+      rgba(225, 252, 255, 0.2) 75%,
+      rgba(255, 255, 255, 0.53) 94%,
+      rgba(255, 255, 255, 0.83) 98%,
+      rgba(255, 255, 255, 0.18) 100%
+    );
+
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.96),
+    inset 3px 4px 12px rgba(255, 255, 255, 0.43),
+    inset -7px -9px 15px rgba(65, 166, 218, 0.15),
+    0 0 9px rgba(255, 255, 255, 0.26),
+    0 0 23px rgba(180, 247, 255, 0.22),
+    0 8px 16px rgba(0, 48, 91, 0.13);
+
+  backdrop-filter: blur(3px) saturate(140%);
+  -webkit-backdrop-filter: blur(3px) saturate(140%);
+
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease;
 }
 
+/* Reflexo principal da superfície */
+.desktop-icon-orb::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 9%;
+  left: 17%;
+  width: 43%;
+  height: 15%;
+
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.52)
+  );
+
+  filter: blur(1px);
+  transform: rotate(-32deg);
+  pointer-events: none;
+}
+
+/* Reflexo curvo interno */
+.desktop-icon-orb::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 7%;
+
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.07) 61%,
+    transparent 76%
+  );
+
+  pointer-events: none;
+}
+
+/* Emoji ou ícone do aplicativo */
 .desktop-icon-art {
+  position: relative;
+  z-index: 1;
+  display: grid;
   width: 48px;
-  height: 46px;
+  height: 48px;
+  place-items: center;
+
   font-size: 34px;
-  filter: drop-shadow(0 4px 5px rgba(0,37,62,.25));
+  line-height: 1;
+
+  filter: drop-shadow(0 2px 4px rgba(0, 44, 77, 0.2));
+
+  transition:
+    transform 260ms ease,
+    filter 260ms ease;
 }
 
+/* Nome do aplicativo */
 .desktop-icon-label {
-  max-width: 84px;
-  font-size: 10px;
+  display: block;
+  width: 100%;
+  max-width: 96px;
+
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: .015em;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
-@media(max-width:500px) {
-  .desktop-icon { width: 78px; min-height: 76px; border-radius: 18px; padding: 6px 3px; }
-  .desktop-icon-art { font-size: 29px; width: 39px; height: 37px; }
+/* Flutuação e brilho ao passar o mouse */
+.desktop-icon:hover {
+  transform: translateY(-3px);
+}
+
+.desktop-icon:hover .desktop-icon-orb {
+  transform: scale(1.055);
+
+  border-color: rgba(255, 255, 255, 1);
+
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 1),
+    inset 3px 4px 15px rgba(255, 255, 255, 0.55),
+    inset -7px -9px 18px rgba(65, 166, 218, 0.12),
+    0 0 15px rgba(255, 255, 255, 0.42),
+    0 0 35px rgba(180, 247, 255, 0.36),
+    0 11px 22px rgba(0, 48, 91, 0.16);
+}
+
+.desktop-icon:hover .desktop-icon-art {
+  transform: scale(1.06);
+  filter: drop-shadow(0 3px 5px rgba(0, 44, 77, 0.25));
+}
+
+/* Seleção com um clique */
+.desktop-icon.is-selected .desktop-icon-orb {
+  border-color: rgba(255, 255, 255, 1);
+
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 1),
+    inset 3px 4px 15px rgba(255, 255, 255, 0.52),
+    inset -7px -9px 18px rgba(65, 166, 218, 0.12),
+    0 0 14px rgba(255, 255, 255, 0.38),
+    0 0 30px rgba(180, 247, 255, 0.3);
+}
+
+/* Foco visível para navegação pelo teclado */
+.desktop-icon:focus-visible .desktop-icon-orb {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 500px) {
+  .desktop-icon {
+    width: 82px;
+    min-height: 105px;
+    gap: 7px;
+    padding: 4px 2px 6px;
+  }
+
+  .desktop-icon-orb {
+    width: 64px;
+    height: 64px;
+  }
+
+  .desktop-icon-art {
+    width: 40px;
+    height: 40px;
+    font-size: 29px;
+  }
+
+  .desktop-icon-label {
+    max-width: 78px;
+    font-size: 10px;
+  }
+}
+
+/* Respeita a preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-icon,
+  .desktop-icon-orb,
+  .desktop-icon-art {
+    transition: none;
+  }
+
+  .desktop-icon:hover,
+  .desktop-icon:hover .desktop-icon-orb,
+  .desktop-icon:hover .desktop-icon-art {
+    transform: none;
+  }
 }
